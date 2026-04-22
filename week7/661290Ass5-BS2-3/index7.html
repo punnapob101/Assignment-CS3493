@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 7 - BS2</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+            min-height: 100vh;
+        }
+    </style>
+</head>
+
+<body class="py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Header Section -->
+        <div class="text-center mb-12">
+            <span
+                class="inline-block py-1 px-3 rounded-full bg-green-100 text-green-700 text-sm font-bold tracking-wider mb-4 border border-green-200">
+                บทเรียน WEEK 7 • ASSIGNMENT
+            </span>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">
+                Assignment 5 - BS5-3
+            </h1>
+            <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                เลือกแบบฝึกหัดที่ต้องการเข้าดูจากปุ่มด้านล่าง
+            </p>
+        </div>
+
+        <!-- Dynamic Button Grid -->
+        <div id="button-grid"
+            class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+            <!-- Buttons will be injected here via JavaScript -->
+        </div>
+
+        <!-- Back to Home Button -->
+        <div class="mt-16 text-center">
+            <a href="../../index.html"
+                class="inline-flex items-center justify-center px-6 py-3 border border-slate-300 rounded-full shadow-sm text-base font-medium text-slate-700 bg-white hover:bg-slate-50 hover:text-green-600 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                กลับไปหน้าหลัก
+            </a>
+        </div>
+    </div>
+
+    <!-- Script to Generate Buttons 46-61 -->
+    <script>
+        const grid = document.getElementById('button-grid');
+
+        const start = 46;
+        const end = 61;
+
+        for (let i = start; i <= end; i++) {
+            const a = document.createElement('a');
+            a.href = `Ass${i}.html`;
+            a.className = "flex flex-col items-center justify-center py-4 px-2 bg-white rounded-xl shadow-sm border border-slate-200 hover:border-green-400 hover:shadow-md hover:text-green-600 text-slate-700 font-semibold text-lg transition-all transform hover:-translate-y-1 group";
+
+            a.innerHTML = `
+                <div class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center mb-2 group-hover:bg-green-50 transition-colors">
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                    </svg>
+                </div>
+                Ass ${i}
+            `;
+
+            grid.appendChild(a);
+        }
+    </script>
+</body>
+
+</html>

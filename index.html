@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fullstack Assignments — CS349</title>
+    <meta name="description" content="งานและบทเรียนทั้งหมดที่ได้ทำและได้เรียนรู้จากวิชา FullStack CS349" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+
+    <!-- External Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Tailwind CSS CDN (for utility classes) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- React + ReactDOM CDN -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        /* ══════════════════════════════════
+           Navbar Component
+        ══════════════════════════════════ */
+        function Navbar() {
+            const [menuOpen, setMenuOpen] = useState(false);
+            const links = [
+                { label: "หน้าหลัก", id: "nav-about", href: "#" },
+                { label: "บทเรียน", id: "nav-lessons", href: "#lessons-section" },
+                { label: "แบบฝึกหัด", id: "nav-exercises", href: "#exercises-section" },
+
+            ];
+
+            return (
+                <nav className="glass-nav">
+                    <div className="nav-container">
+
+                        {/* Logo */}
+                        <a href="#" className="nav-logo" id="nav-logo">
+                            <img
+                                src="images/logo.png"
+                                alt="Logo"
+                                onError={(e) => (e.target.style.display = "none")}
+                            />
+
+                        </a>
+
+                        {/* Desktop Links */}
+                        <ul className="nav-links">
+                            {links.map((link) => (
+                                <li key={link.id}>
+                                    <a href={link.href} className="nav-link" id={link.id}>
+                                        {link.label}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+
+                        {/* Hamburger (Mobile only) */}
+                        <button
+                            id="nav-hamburger"
+                            className="hamburger"
+                            onClick={() => setMenuOpen(!menuOpen)}
+                            aria-label="Toggle navigation menu"
+                        >
+                            <span
+                                className="hamburger-line"
+                                style={menuOpen ? { transform: "rotate(45deg) translate(5px,5px)" } : {}}
+                            />
+                            <span
+                                className="hamburger-line"
+                                style={menuOpen ? { opacity: 0 } : {}}
+                            />
+                            <span
+                                className="hamburger-line"
+                                style={menuOpen ? { transform: "rotate(-45deg) translate(5px,-5px)" } : {}}
+                            />
+                        </button>
+                    </div>
+
+                    {/* Mobile Menu */}
+                    <div className={`mobile-menu ${menuOpen ? "open" : ""}`} id="mobile-menu">
+                        <ul>
+                            {links.map((link) => (
+                                <li key={link.id}>
+                                    <a href={link.href} onClick={() => setMenuOpen(false)}>
+                                        {link.label}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </nav>
+            );
+        }
+
+        /* ══════════════════════════════════
+           Hero Section Component
+        ══════════════════════════════════ */
+        function Hero() {
+            return (
+                <section className="hero-bg hero-section">
+                    {/* Orbs */}
+                    <div className="orb orb-1" />
+                    <div className="orb orb-2" />
+                    <div className="orb orb-3" />
+
+                    {/* Grid overlay */}
+                    <div className="grid-overlay" />
+
+                    <div className="hero-inner">
+
+                        {/* ── Left: Content ── */}
+                        <div className="hero-content">
+
+                            {/* Heading */}
+                            <h1 className="hero-heading anim-fadeup delay-2">
+                                <span className="hero-heading-gradient">CS349</span>
+                                Fullstack Assignments
+                            </h1>
+
+                            {/* Description */}
+                            <p className="hero-desc anim-fadeup delay-3">
+                                นี่คืองานและบทเรียนทั้งหมดที่ผมได้ทำและได้เรียนรู้จากวิชา FullStack
+                            </p>
+
+                            {/* Scroll CTA Buttons */}
+                            <div className="anim-fadeup delay-4" style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+                                <a href="#lessons-section" className="btn-scroll-exercises" id="hero-lessons-btn">
+                                    <span>📚 ดูบทเรียน</span>
+                                    <span className="btn-scroll-arrow">↓</span>
+                                </a>
+                                <a href="#exercises-section" className="btn-scroll-exercises btn-scroll-exercises-outline" id="hero-exercises-btn">
+                                    <span>📋 ดูแบบฝึกหัด</span>
+                                    <span className="btn-scroll-arrow btn-scroll-arrow-blue">↓</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        {/* ── Right: Mascot ── */}
+                        <div className="hero-mascot anim-faderight delay-mascot">
+                            <div className="mascot-wrap">
+                                <div className="mascot-glow" />
+                                <img
+                                    src="images/Mascot.png"
+                                    alt="Mascot"
+                                    className="mascot-img"
+                                    draggable="false"
+                                    onError={(e) => {
+                                        e.target.parentElement.innerHTML = `
+                        <div style="width:320px;height:320px;border-radius:50%;
+                          background:rgba(59,130,246,0.3);display:flex;
+                          align-items:center;justify-content:center;font-size:6rem;">
+                          🎮
+                        </div>`;
+                                    }}
+                                />
+                                <div className="mascot-nitro-badge" style={{ fontSize: '1.0rem', fontWeight: 'bold', transform: 'translateX(20px)' }}>แอสไซเม้นท์ ของปุณณภพ</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Wave */}
+                    <div className="hero-wave">
+                        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                            <path
+                                d="M0 40 C240 80 480 0 720 40 C960 80 1200 0 1440 40 L1440 80 L0 80 Z"
+                                fill="rgba(10,22,40,0.5)"
+                            />
+                        </svg>
+                    </div>
+                </section>
+            );
+        }
+
+        /* ══════════════════════════════════
+           Exercise Card Component
+        ══════════════════════════════════ */
+        function ExerciseCard({ number, title, link }) {
+            const hasLink = link && link.trim() !== "";
+            return (
+                <div className={`ex-card ${!hasLink ? "ex-card-disabled" : ""}`}>
+                    <div className="ex-card-number">#{number}</div>
+                    <h3 className="ex-card-title">{title || "ยังไม่มีหัวข้อ"}</h3>
+                    <div className="ex-card-footer">
+                        {hasLink ? (
+                            <a
+                                href={link}
+                                className="ex-card-btn"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                เข้าดู →
+                            </a>
+                        ) : (
+                            <span className="ex-card-btn-disabled">⏳ เร็วๆ นี้</span>
+                        )}
+                    </div>
+                </div>
+            );
+        }
+
+        /* ══════════════════════════════════
+           Exercises Section Component
+           ✏️ เพิ่มการ์ด: เพิ่ม { title: "...", link: "..." }
+              ต่อท้าย array ด้านล่างได้เลย!
+        ══════════════════════════════════ */
+        function ExercisesSection() {
+            const exercises = [
+                { title: "Week 2 Ass 1  ข้อ 1", link: "week1/Ass 1 Week 1/index.html" },
+                { title: "Week 2 Ass 1  ข้อ 2", link: "week1/Ass 1 Week 1/list.html" },
+                { title: "Week 2 Ass 1  ข้อ 3", link: "week1/Ass 1 Week 1/webvideo.html" },
+                { title: "Week 2 Ass 2  แนะนำจังหวัด", link: "week1/Ass 2 Week 1/index.html" },
+                { title: "Week 3 Ass 3/1  CSS", link: "week3/ass3_css/660673Mywebsite.html" },
+                { title: "Week 4 Ass 4  CSS", link: "week3/ass3_css/660673home.html" },
+                { title: "Week 4 Ass 4-2  แนะนำจังหวัด+CSS", link: "week4/ass4-2/index.html" },
+                { title: "Week 5 Ass 5  เว็บท่องเที่ยวระดับภูมิภาค", link: "week5/660673_Assignment_5/index.html" },
+                { title: "Week 7 Ass 6  ออกแบบฟอร์ม", link: "week7/ass6/one.html" },
+                { title: "Week 9 Ass 7 ปรับแบบฟอร์ม", link: "week9/660673 bs5/one.html" },
+                { title: "Week 10 Ass 8 ระบบคำนวณราคาสินค้าและแสดงผลการสั่งซื้อ", link: "week10/Assignment-JavaScritp 660673/index.html" },
+                { title: "Week 11 Ass 9 Array and Object", link: "week11/660673Ass11/index.html" },
+                { title: "Week 12 Ass 10 JavaScritp-ข้อ 3", link: "week12/Assignment-JS/index.html" },
+                // ✏️ เพิ่มการ์ดใหม่ต่อจากนี้ได้เลย
+            ];
+
+            return (
+                <section id="exercises-section" className="exercises-section">
+                    <div className="exercises-inner">
+                        <div className="exercises-header">
+                            <span className="exercises-badge">📋 CS349</span>
+                            <h2 className="exercises-title">แบบฝึกหัด</h2>
+                            <p className="exercises-subtitle">
+                                รวมแบบฝึกหัดและงานที่มอบหมายจากวิชา Fullstack
+                            </p>
+                        </div>
+
+                        <div className="ex-grid">
+                            {exercises.map((ex, i) => (
+                                <ExerciseCard
+                                    key={i}
+                                    number={i + 1}
+                                    title={ex.title}
+                                    link={ex.link}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            );
+        }
+
+        /* ══════════════════════════════════
+           Lessons Section Component
+           ✏️ เพิ่มบทเรียน: เพิ่ม { title: "...", link: "..." }
+              ต่อท้าย array ได้เลย!
+        ══════════════════════════════════ */
+        function LessonsSection() {
+            const lessons = [
+                { title: "บทเรียน Week 5 BS2", link: "week5/Ass5-BS2/index.html" },
+                { title: "บทเรียน Week 7 BS5", link: "week7/661290Ass5-BS2-3/index7.html" },
+                { title: "บทเรียน Week 8 BS5", link: "week8/660673Assignment 6 - BS5-4/index8.html" },
+                { title: "บทเรียน Week 9 BS5", link: "week9/Ass7_BS5-4/index9.html" },
+                { title: "บทเรียน Week 10 JavaScript Front-End", link: "week10/Ass8_Javascript/index10.html" },
+                { title: "บทเรียน Week 11 JavaScript Front-End 2", link: "week11/Ass8_js_660673/index11.html" },
+
+                // ✏️ เพิ่มบทเรียนใหม่ต่อจากนี้ได้เลย
+            ];
+
+            return (
+                <section id="lessons-section" className="lessons-section">
+                    <div className="exercises-inner">
+                        <div className="exercises-header">
+                            <span className="lessons-badge">📚 CS349</span>
+                            <h2 className="exercises-title">บทเรียน</h2>
+                            <p className="exercises-subtitle">
+                                รวมบทเรียนทั้งหมดจากวิชา Fullstack
+                            </p>
+                        </div>
+
+                        <div className="ex-grid">
+                            {lessons.map((lesson, i) => (
+                                <ExerciseCard
+                                    key={i}
+                                    number={i + 1}
+                                    title={lesson.title}
+                                    link={lesson.link}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            );
+        }
+
+        /* ══════════════════════════════════
+           Footer Component
+        ══════════════════════════════════ */
+        function Footer() {
+            return (
+                <footer className="footer-section">
+                    <div className="footer-inner">
+                        <div className="footer-top">
+                            <div className="footer-brand">
+                                <h3>Fullstack CS349</h3>
+                                <p>บทเรียนและแบบฝึกหัดวิชา Fullstack Development</p>
+                            </div>
+                            <div className="footer-profile">
+                                <p><strong>จัดทำโดย:</strong> ปุณณภพ</p>
+                                <p><strong>เสนอ:</strong> อาจารย์ ยุวธิดา</p>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            );
+        }
+
+        /* ══════════════════════════════════
+           App Root
+        ══════════════════════════════════ */
+        function App() {
+            return (
+                <div>
+                    <Navbar />
+                    <Hero />
+                    <LessonsSection />
+                    <ExercisesSection />
+                    <Footer />
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(<App />);
+    </script>
+</body>
+
+</html>

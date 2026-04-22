@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สถานที่ท่องเที่ยว - บุรีรัมย์</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* ฟอนต์หลัก */
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #000; /* สีสำรอง */
+        }
+
+        /* พื้นหลังรูปภาพ images/23.jpg */
+        .bg-attraction {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/23.jpg') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed; /* ตรึงรูปพื้นหลัง */
+            z-index: -2;
+        }
+
+        /* เลเยอร์สีดำจางๆ ทับรูปพื้นหลัง */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6); /* สีดำโปร่งแสง 60% */
+            z-index: -1;
+        }
+
+        /* Navbar แบบใส */
+        .navbar {
+            background: rgba(0, 0, 0, 0.8) !important; /* พื้นหลังดำจางๆ */
+            backdrop-filter: blur(5px);
+        }
+        .nav-link {
+            color: rgba(255,255,255,0.7) !important;
+            transition: 0.3s;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #fff !important;
+            font-weight: 600;
+        }
+
+        /* การ์ดสถานที่ท่องเที่ยว */
+        .card {
+            border: none;
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: rgba(255, 255, 255, 0.95); /* สีขาวโปร่งแสงนิดหน่อย */
+        }
+        .card:hover {
+            transform: translateY(-10px); /* ลอยขึ้นเมื่อชี้ */
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4) !important;
+        }
+        .card-img-top {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        /* หัวข้อหน้า */
+        .page-title {
+            color: white;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-top: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0,0,0,0.9);
+            color: #ccc;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- พื้นหลังและ Overlay -->
+    <div class="bg-attraction"></div>
+    <div class="overlay"></div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark shadow sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html"><i class="fas fa-map-marker-alt text-warning"></i> BURIRAM</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">หน้าแรก</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="one.html">สถานที่ท่องเที่ยว</a></li>
+                    <li class="nav-item"><a class="nav-link" href="two.html">ของดีประจำจังหวัด</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container pb-5">
+        <div class="text-center mb-5">
+            <h1 class="page-title display-4">สถานที่ท่องเที่ยวแนะนำ</h1>
+            <div style="width: 100px; height: 4px; background: #ffd700; margin: 10px auto;"></div>
+            <p class="text-white-50 mt-2">สัมผัสเสน่ห์เมืองปราสาทหินและแหล่งท่องเที่ยวระดับโลก</p>
+        </div>
+
+        <div class="row g-4"> <!-- g-4 เพิ่มช่องว่างระหว่างการ์ด -->
+
+            <!-- Card 1 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="images/panomrung.jpg" class="card-img-top" alt="พนมรุ้ง" onerror="this.src='https://placehold.co/600x400?text=Phanom+Rung';">
+                    <div class="card-body">
+                        <h3 class="card-title h5 fw-bold text-primary">1. อุทยานประวัติศาสตร์พนมรุ้ง</h3>
+                        <p class="card-text text-muted small">ปราสาทหินสีชมพูที่ตั้งอยู่บนยอดภูเขาไฟที่ดับสนิทแล้ว สวยงามและมีชื่อเสียงที่สุดในไทย ชมปรากฏการณ์ดวงอาทิตย์ขึ้นลอด 15 ช่องประตู</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="images/changArena.jpg" class="card-img-top" alt="ช้างอารีนา" onerror="this.src='https://placehold.co/600x400?text=Chang+Arena';">
+                    <div class="card-body">
+                        <h3 class="card-title h5 fw-bold text-primary">2. สนามช้างอารีนา</h3>
+                        <p class="card-text text-muted small">สนามฟุตบอลมาตรฐานสากล (FIFA) ความจุ 32,600 ที่นั่ง เป็นแลนด์มาร์คสำคัญของเมืองกีฬา และรังเหย้าของสโมสรบุรีรัมย์ ยูไนเต็ด</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="images/kadoong.jpg" class="card-img-top" alt="เขากระโดง" onerror="this.src='https://placehold.co/600x400?text=Khao+Kradong';">
+                    <div class="card-body">
+                        <h3 class="card-title h5 fw-bold text-primary">3. เขากระโดง</h3>
+                        <p class="card-text text-muted small">วนอุทยานภูเขาไฟกระโดง เป็นภูเขาไฟที่ดับสนิทแล้ว มีปากปล่องทะลุเห็นได้ชัดเจน และเป็นที่ประดิษฐานพระสุภัทรบพิตรองค์ใหญ่</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="images/gp.jpg" class="card-img-top" alt="สนามแข่งรถ" onerror="this.src='https://placehold.co/600x400?text=Circuit';">
+                    <div class="card-body">
+                        <h3 class="card-title h5 fw-bold text-primary">4. บุรีรัมย์ อินเตอร์เนชันแนล เซอร์กิต</h3>
+                        <p class="card-text text-muted small">สนามช้าง อินเตอร์เนชั่นแนล เซอร์กิต สนามแข่งรถมาตรฐานระดับโลกแห่งแรกในไทย ที่รองรับการแข่งขัน MotoGP และรายการระดับโลกมากมาย</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="images/pasat.jpg" class="card-img-top" alt="ปราสาทเมืองต่ำ" onerror="this.src='https://placehold.co/600x400?text=Muang+Tam';">
+                    <div class="card-body">
+                        <h3 class="card-title h5 fw-bold text-primary">5. ปราสาทเมืองต่ำ</h3>
+                        <p class="card-text text-muted small">โบราณสถานขอมที่มีสถาปัตยกรรมสวยงาม โดดเด่นด้วยสระน้ำล้อมรอบระเบียงคดทั้ง 4 ด้าน บรรยากาศร่มรื่นน่าท่องเที่ยว</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="images/d.jpg" class="card-img-top" alt="เขื่อนลำนางรอง" onerror="this.src='https://placehold.co/600x400?text=Dam';">
+                    <div class="card-body">
+                        <h3 class="card-title h5 fw-bold text-primary">6. เขื่อนลำนางรอง</h3>
+                        <p class="card-text text-muted small">แหล่งพักผ่อนหย่อนใจ ทะเลสาบน้ำจืดขนาดใหญ่ มีร้านอาหารและหาดทรายเทียม เหมาะสำหรับการพาครอบครัวมาพักผ่อน</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="container text-center">
+            <p class="mb-0">@copy by Punnapob บุรีรัมย์น่าเที่ยวเด้อ</p>
+            <small class="text-muted">พัฒนาเว็บไซต์ด้วย Bootstrap 5</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

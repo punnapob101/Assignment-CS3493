@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ass49 - Floating Label</title>
+    <!--เรียกใช้ Bootstarp จาก Folder Bootstarpที่โหลดมา-->
+    <link href="bootstrap-5.1.0-dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="bootstrap-5.1.0-dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- เรียกใช้ Bootstarp จาก CDN (Content Delivery Network) (icon https://icons.getbootstrap.com)
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+     -->
+</head>
+
+<body>
+
+    <form class="m-3">
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="email" placeholder="Email (Login)">
+            <label for="email" class="form-label text-muted">Email Address</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="password" placeholder="Password">
+            <label for="password" class="form-label text-muted">Password</label>
+        </div>
+        <div class="form-floating mb-3">
+            <textarea class="form-control" id="pswdHint" placeholder="About your password"
+                style="height: 80px;"></textarea>
+            <label for="pswdHint" class="form-label text-muted">Password Hint</label>
+        </div>
+        <button class="btn btn-primary">Sign up</button>
+    </form>
+
+</body>
+
+</html>

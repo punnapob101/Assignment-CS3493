@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 8 - BS5 Flexbox</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #fffbeb 0%, #ffffff 100%);
+            min-height: 100vh;
+        }
+    </style>
+</head>
+
+<body class="py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Header Section -->
+        <div class="text-center mb-12">
+            <span
+                class="inline-block py-1 px-3 rounded-full bg-amber-100 text-amber-700 text-sm font-bold tracking-wider mb-4 border border-amber-200">
+                WEEK 8 • ASSIGNMENT
+            </span>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">
+                บทเรียน <span class="text-amber-600">BS5-4</span>
+            </h1>
+            <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                เลือกแบบฝึกหัดที่ต้องการเข้าดูจากปุ่มด้านล่าง
+            </p>
+        </div>
+
+        <!-- Dynamic Button Grid -->
+        <div id="button-grid"
+            class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+            <!-- Buttons will be injected here via JavaScript -->
+        </div>
+
+        <!-- Back to Home Button -->
+        <div class="mt-16 text-center">
+            <a href="../../index.html"
+                class="inline-flex items-center justify-center px-6 py-3 border border-slate-300 rounded-full shadow-sm text-base font-medium text-slate-700 bg-white hover:bg-slate-50 hover:text-amber-600 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                กลับไปหน้าหลัก
+            </a>
+        </div>
+    </div>
+
+    <!-- Script to Generate Buttons for specific files -->
+    <script>
+        const grid = document.getElementById('button-grid');
+
+        // รายชื่อไฟล์และหัวข้อทั้งหมดในโฟลเดอร์นี้
+        const files = [
+            { title: "01 Flex", file: "01_d-flex.html" },
+            { title: "02 Flex Dir", file: "02_flex-direction.html" },
+            { title: "03 Flex Wrap 1", file: "03_flex-warp-1.html" },
+            { title: "04 Flex Wrap 2", file: "04_flex-warp-2.html" },
+            { title: "05 Justify Row", file: "05_justify-content-row.html" },
+            { title: "06 Justify Col", file: "06_ justify-content-column.html" },
+            { title: "07 Align Row 1", file: "07_align-item-row-1.html" },
+            { title: "08 Align Row 2", file: "08_align-item-row-2.html" },
+            { title: "09 Align Col", file: "09_align-item-column.html" },
+            { title: "10 Content Col", file: "10_align-content-column.html" },
+            { title: "11 Content Row", file: "11_align-content-row.html" },
+            { title: "12 Align Self", file: "12_align-self.html" },
+            { title: "Flex Grow", file: "flex-grow.html" }
+        ];
+
+        files.forEach(item => {
+            const a = document.createElement('a');
+            a.href = item.file;
+            a.className = "flex flex-col items-center justify-center p-4 bg-white rounded-xl shadow-sm border border-slate-200 hover:border-amber-400 hover:shadow-md hover:text-amber-600 text-slate-700 font-semibold text-center transition-all transform hover:-translate-y-1 group";
+
+            a.innerHTML = `
+                <div class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center mb-3 group-hover:bg-amber-50 transition-colors">
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path>
+                    </svg>
+                </div>
+                <span class="text-sm leading-tight">${item.title}</span>
+            `;
+
+            grid.appendChild(a);
+        });
+    </script>
+</body>
+
+</html>
